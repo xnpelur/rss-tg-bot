@@ -1,5 +1,3 @@
-
-
 import asyncio
 import logging
 import sys
@@ -7,7 +5,7 @@ import sys
 from dotenv import load_dotenv
 from os import getenv
 
-from aiogram import Bot, Dispatcher, html
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
@@ -29,7 +27,15 @@ async def command_start_handler(message: Message) -> None:
     if not article:
         await message.answer("Что-то пошло не так, пожалуйста повторите попытку")
     else:
-        await message.answer(article.description)
+        text = "\n\n".join([
+            f"<b>{article.title}</b>", 
+            article.description, 
+            f'<a href="{article.link}">Читать полностью</a>'
+        ])
+        if len(article.image_url) > 0:
+            await message.answer_photo(article.image_url, text)
+        else:
+            await message.answer(text)
 
 
 @dp.message()
