@@ -13,3 +13,7 @@ def get_random_article(urls):
         return Article(random_entry)
     else:
         return None
+
+
+def get_feed_title(url):
+    return feedparser.parse(url).feed.title

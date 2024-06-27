@@ -9,7 +9,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
-from handlers import commands, welcome, source_management, fallback 
+from handlers import commands, welcome, source_management, adding_source, fallback
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
@@ -22,6 +22,7 @@ async def main() -> None:
         commands.router, 
         welcome.router, 
         source_management.router, 
+        adding_source.router,
         fallback.router
     )
     await dp.start_polling(bot)
