@@ -14,11 +14,11 @@ router = Router()
 async def send_random_article(message: Message, state: FSMContext):
     state_data = await state.get_data()
 
-    if not "urls" in state_data or len(state_data["urls"]) == 0:
+    if not "feeds" in state_data or len(state_data["feeds"]) == 0:
         await message.answer(Messages.URLS_EMPTY)
         return
 
-    urls = state_data["urls"]
+    urls = [feed["url"] for feed in state_data["feeds"]]
     article = get_random_article(urls)
     if not article:
         await message.answer(Messages.ERROR)

@@ -22,6 +22,17 @@ async def adding_source(message: Message, state: FSMContext):
 
     try:
         title = get_feed_title(url)
+        state_data = await state.get_data()
+
+        if not "feeds" in state_data:
+            state_data["feeds"] = []
+
+        state_data["feeds"].append({
+            "title": title,
+            "url": url
+        })
+        await state.set_data(state_data)
+
         await message.answer(f'{Messages.ADDING_SOURCE_SUCCESS}: "{title}"')
     except Exception as e:
         await message.answer(Messages.ERROR)
