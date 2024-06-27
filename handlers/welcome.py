@@ -2,9 +2,9 @@ from aiogram import Router, F
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 from aiogram.fsm.context import FSMContext
 
-from randomizer import get_random_article 
-from constants import Messages, Buttons
-from states import States
+from lib.randomizer import get_random_article 
+from static.constants import Messages, Buttons
+from static.states import States
 
 
 router = Router()

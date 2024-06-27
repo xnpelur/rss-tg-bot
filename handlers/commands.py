@@ -3,8 +3,8 @@ from aiogram.filters import Command
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 from aiogram.fsm.context import FSMContext
 
-from constants import Messages, Buttons
-from states import States
+from static.constants import Messages, Buttons
+from static.states import States
 
 
 router = Router()

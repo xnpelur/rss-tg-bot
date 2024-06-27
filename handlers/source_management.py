@@ -2,8 +2,8 @@ from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 
-from constants import Buttons
-from states import States
+from static.constants import Buttons
+from static.states import States
 from handlers.commands import command_start_handler
 
 

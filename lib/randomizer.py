@@ -1,7 +1,7 @@
 import random
 import feedparser
 
-from article import Article
+from lib.article import Article
 
 
 def get_random_article(urls):
