@@ -26,6 +26,11 @@ async def adding_source(message: Message, state: FSMContext):
 
         if not "feeds" in state_data:
             state_data["feeds"] = []
+        
+        for feed in state_data["feeds"]:
+            if feed["title"] == title:
+                await message.answer(Messages.SOURCE_ALREADY_EXISTS)
+                return
 
         state_data["feeds"].append({
             "title": title,
